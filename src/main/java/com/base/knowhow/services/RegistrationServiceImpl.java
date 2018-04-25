@@ -20,13 +20,11 @@ public class RegistrationServiceImpl implements RegistrationService {
 
     @Override
     public void register(UserRegistrationForm userForm) {
-        User newUser = new User.Builder()
-                .username(userForm.getLogin())
+        User newUser = User.builder()
                 .email(userForm.getEmail())
                 .password(passwordEncoder.encode(userForm.getPassword()))
                 .firstName(userForm.getFirstName())
-                .lastName(userForm.getLastName())
-                .birthDate(userForm.getBirthDate())
+                .secondName(userForm.getSecondName())
                 .role(Role.USER)
                 .build();
 

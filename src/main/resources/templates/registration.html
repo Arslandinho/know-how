@@ -1,5 +1,5 @@
 ﻿<!doctype html>
-<html lang="ru">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -23,15 +23,18 @@
 <body class="text-center">
 
 <h1></h1>
-<!--<#if error??>-->
-    <!--<div class="alert alert-danger" role="alert">${error}</div>-->
-<!--</#if>-->
+
 <form class="form-signin" action="/registration" method="post">
     <!--<img src="saturn.png" alt="" width="144" height="144">-->
 
     <div class="text-center mb-4">
         <!--<img class="mb-4" src="pics/symbol.gif" alt="" width="144" height="144">-->
         <div class="thumbnail"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Okidoki.svg/2000px-Okidoki.svg.png" alt="kitty" id="okiPic"/></div>
+        <!--<div class="alert alert-danger">-->
+            <th:block th:each="error : ${error}">
+                <div th:text="${error}"></div>
+            </th:block>
+        <!--</div>-->
 
         <!--<h1 class="h3 mb-3 font-weight-normal">Вход</h1>-->
     </div>
@@ -39,7 +42,7 @@
     <!--<label for="firstName">First name </label>-->
     <input type=text name="firstName" id="firstName" class="form-control" placeholder="First name">
 
-    <input type=text  name="lastName" id="secondName" class="form-control" placeholder="Last name">
+    <input type=text  name="secondName" id="secondName" class="form-control" placeholder="Second name">
 
 
     <input type="text" name="email" class="form-control" placeholder="Email" required autofocus>
