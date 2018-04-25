@@ -1,0 +1,49 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Greeting</title>
+
+    <!--<link href="../../../../dist/css/bootstrap.min.css" rel="stylesheet">-->
+
+    <link href="/css/index.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Okidoki.svg/2000px-Okidoki.svg.png" width="130" height="45" alt="">
+    </a>
+</nav>
+<div id = "menu1">
+<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+    <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Main </a>
+    <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="/registration" role="tab" aria-controls="v-pills-profile" aria-selected="false">Registration</a>
+    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="/logout" role="tab" aria-controls="v-pills-messages" aria-selected="false">Sign out</a>
+    <!--<a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>-->
+</div>
+</div>
+<div class="thumbnail"><img src="https://pp.userapi.com/c844417/v844417718/16cbc/0iG69s068uk.jpg" alt="kitty" id="Visual" style="float: right"/></div>
+<main role="main" class="container">
+    <h1 class="mt-5">Welcome</h1>
+    <!--<div th:if="${#authentication.isAuthenticated()}">-->
+    <p class="lead">  Great to see you again,<span th:text ="${#authentication.getPrincipal().getUser().getFirstName()}"></span>
+    </p>
+    <!--<div th:unless="${#authentication==null}"></div>-->
+    <div>
+        <p>Would you like to upload a file?</p>
+        <a href="/upload">Click here</a>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <span class="text-muted">OkiDoki 2018</span>
+    </div>
+</footer>
+</body>
+</html>
