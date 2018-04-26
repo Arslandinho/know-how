@@ -27,17 +27,14 @@ public class RegistrationValidator implements Validator {
 
         UserRegistrationForm form = (UserRegistrationForm) target;
 
-        Optional<User> existedUsername = userRepository.findByUsername(form.getLogin());
         Optional<User> existedEmail = userRepository.findByEmail(form.getEmail());
 
-        if (existedUsername.isPresent()) {
-            errors.reject("bad.login", "Логин занят");
-        }
         if (existedEmail.isPresent()) {
             errors.reject("bad.email", "Электронный адрес занят");
         }
 
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "login", "empty.login", "Пустой логин");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "firstName", "empty.firstName", "Empty field first name");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "secondName", "empty.secondName", "Empty field second name");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "empty.password", "Пустой пароль");
     }
 }

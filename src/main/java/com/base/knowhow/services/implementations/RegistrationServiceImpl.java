@@ -1,9 +1,10 @@
-package com.base.knowhow.services;
+package com.base.knowhow.services.implementations;
 
 import com.base.knowhow.forms.UserRegistrationForm;
 import com.base.knowhow.models.User;
 import com.base.knowhow.repositories.UserRepository;
 import com.base.knowhow.security.enums.Role;
+import com.base.knowhow.services.RegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -20,13 +21,11 @@ public class RegistrationServiceImpl implements RegistrationService {
 
     @Override
     public void register(UserRegistrationForm userForm) {
-        User newUser = new User.Builder()
-                .username(userForm.getLogin())
+        User newUser = User.builder()
                 .email(userForm.getEmail())
                 .password(passwordEncoder.encode(userForm.getPassword()))
                 .firstName(userForm.getFirstName())
-                .lastName(userForm.getLastName())
-                .birthDate(userForm.getBirthDate())
+                .secondName(userForm.getSecondName())
                 .role(Role.USER)
                 .build();
 

@@ -5,6 +5,7 @@ import com.base.knowhow.services.RegistrationService;
 import com.base.knowhow.validators.RegistrationValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,30 +26,24 @@ public class RegistrationController {
     private RegistrationValidator registrationValidator;
 
     @InitBinder("regForm")
-    public void addValidator(WebDataBinder dataBinder){
+    public void addValidator(WebDataBinder dataBinder) {
         dataBinder.addValidators(registrationValidator);
     }
 
-//    @GetMapping("/hey")
-//    public String hey(){
-//        return "registration";
-//    }
-
     @GetMapping(value = "/registration")
-    public String showRegPage(){
+    public String showRegPage() {
         return "registration";
     }
 
     @PostMapping(value = "/registration")
     public String reg(@Valid @ModelAttribute("regForm") UserRegistrationForm registrationForm,
-                      BindingResult result, RedirectAttributes attributes){
-//        if(result.hasErrors()){
-//            attributes.addFlashAttribute("error",result.getAllErrors().get(0).getDefaultMessage());
-//            return "redirect:/registration";
-//        }
-        System.out.println("hello there #1!");
+                      BindingResult result, RedirectAttributes attributes, Model model) {
+        registrationValidator.validate(registrationForm, result);
+        if (result.hasErrors()) {
+            model.addAttribute("error", result.getAllErrors().get(0).getDefaultMessage());
+            return "registration";
+        }
         registrationService.register(registrationForm);
-        System.out.println("TEST IS HERE 3");
 
         return "redirect:/signIn";
     }

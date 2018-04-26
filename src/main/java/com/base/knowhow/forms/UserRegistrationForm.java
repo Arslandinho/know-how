@@ -14,7 +14,7 @@ public class UserRegistrationForm {
     private String password;
     private String email;
     private String firstName;
-    private String lastName;
+    private String secondName;
     private Date birthDate;
     private String role;
 
@@ -50,12 +50,12 @@ public class UserRegistrationForm {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getSecondName() {
+        return secondName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
     }
 
     public Date getBirthDate() {

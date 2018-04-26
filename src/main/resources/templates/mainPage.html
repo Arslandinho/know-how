@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <title>Main</title>
+    <div th:include="fragments/header :: head"></div>
 
     <!--<link href="../../../../dist/css/bootstrap.min.css" rel="stylesheet">-->
 
@@ -14,11 +15,8 @@
 </head>
 
 <body>
-<nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="#">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Okidoki.svg/2000px-Okidoki.svg.png" width="130" height="45" alt="">
-    </a>
-</nav>
+<div th:include="fragments/header :: navbar"></div>
+
 <div id = "menu1">
     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
         <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Main </a>
