@@ -1,8 +1,9 @@
-package com.base.knowhow.services;
+package com.base.knowhow.services.implementations;
 
 import com.base.knowhow.models.User;
 import com.base.knowhow.repositories.UserRepository;
 import com.base.knowhow.security.details.UserDetailsImpl;
+import com.base.knowhow.services.AuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         UserDetailsImpl currentUserDetails = (UserDetailsImpl)authentication.getPrincipal();
         User currentUserModel = currentUserDetails.getUser();
         Long currentUserId = currentUserModel.getId();
-        System.out.println("CURRENT USER ID IS " + currentUserId);
         return userRepository.getOne(currentUserId);
     }
 

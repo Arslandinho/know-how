@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @ComponentScan("com.base.knowhow")
 @EnableJpaRepositories("com.base.knowhow.repositories")
-@EntityScan("com.base.knowhow.models")
+@EntityScan("com.base.knowhow")
 @SpringBootApplication
 //@EnableOAuth2Sso
 public class KnowHowApplication {

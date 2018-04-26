@@ -1,9 +1,10 @@
-package com.base.knowhow.services;
+package com.base.knowhow.services.implementations;
 
 import com.base.knowhow.forms.UserRegistrationForm;
 import com.base.knowhow.models.User;
 import com.base.knowhow.repositories.UserRepository;
 import com.base.knowhow.security.enums.Role;
+import com.base.knowhow.services.RegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;

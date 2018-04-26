@@ -26,32 +26,24 @@ public class RegistrationController {
     private RegistrationValidator registrationValidator;
 
     @InitBinder("regForm")
-    public void addValidator(WebDataBinder dataBinder){
+    public void addValidator(WebDataBinder dataBinder) {
         dataBinder.addValidators(registrationValidator);
     }
 
-//    @GetMapping("/hey")
-//    public String hey(){
-//        return "registration";
-//    }
-
     @GetMapping(value = "/registration")
-    public String showRegPage(){
+    public String showRegPage() {
         return "registration";
     }
 
     @PostMapping(value = "/registration")
     public String reg(@Valid @ModelAttribute("regForm") UserRegistrationForm registrationForm,
-                      BindingResult result, RedirectAttributes attributes,Model model){
-        registrationValidator.validate(registrationForm,result);
-        if(result.hasErrors()){
-//            attributes.addFlashAttribute("error",result.getAllErrors().get(0).getDefaultMessage());
-            model.addAttribute("error",result.getAllErrors().get(0).getDefaultMessage());
+                      BindingResult result, RedirectAttributes attributes, Model model) {
+        registrationValidator.validate(registrationForm, result);
+        if (result.hasErrors()) {
+            model.addAttribute("error", result.getAllErrors().get(0).getDefaultMessage());
             return "registration";
         }
-        System.out.println("hello there #1!");
         registrationService.register(registrationForm);
-        System.out.println("TEST IS HERE 3");
 
         return "redirect:/signIn";
     }

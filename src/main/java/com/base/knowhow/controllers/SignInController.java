@@ -27,14 +27,13 @@ public class SignInController {
     @GetMapping("/signIn")
     public String login(@ModelAttribute("model") ModelMap model, Authentication authentication,
                         @RequestParam Optional<String> error) {
-        if (authentication==null){
-            System.out.println("THE FIRST AUTHENTICATION IS NULL");
+        if (authentication == null) {
         }
         if (authentication != null) {
-            System.out.println("HERE REDIRECT IS HAPPENING");
             return "redirect:/";
         }
         model.addAttribute("error", error);
+
         return "signIn";
     }
 
@@ -46,18 +45,15 @@ public class SignInController {
 
         return "redirect:/signIn";
     }
+
     @GetMapping("/")
     public String root(Authentication authentication) {
-        if (authentication == null){
-            System.out.println("THE SECOND AUTHENTICATION IS NULL");
+        if (authentication == null) {
             return "redirect:/signIn";
         } else {
-            System.out.println("THE USER IS FROM DB");
             User user = service.getUserByAuthentication(authentication);
-//            model.addAttribute(service.getUserByAuthentication(authentication));
-//            model.addAttribute("model",user.getFirstName());
-            System.out.println("OUR USER'S NAME IS "+user.getFirstName());
         }
+
         return "index";
     }
 

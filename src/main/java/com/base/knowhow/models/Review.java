@@ -21,10 +21,6 @@ public class Review {
     private Long id;
 
     @NotNull
-    @Size(min = 1,max = 10)
-    private int score;
-
-    @NotNull
     private String reviewDate;
 
     @NotNull
