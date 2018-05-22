@@ -20,7 +20,7 @@ import java.util.Set;
 public class User {
 
     @OneToMany(mappedBy = "user",fetch = FetchType.LAZY)
-    private Set<Review> reviews;
+    private Set<Article> articles;
 
     @Column(name = "id")
     @Id

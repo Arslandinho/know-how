@@ -16,25 +16,25 @@
 <div class="container">
     <section id="team" class="pb-5">
         <div class="container">
-            <h5 class="section-title h1">Рецензии</h5>
+            <h5 class="section-title h1">Статьи</h5>
             <div class="row">
-                <th:block th:each="review : ${review}">
+                <th:block th:each="article : ${article}">
                     <div class="col-xs-12 col-sm-6 col-md-4">
                     <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
                     <div class="mainflip">
                         <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <h4 class="card-title" th:text="${review.getReviewName()}"></h4>
-                                        <a class="header"th:href="@{'/review/' + ${review.getId()}}">Читать полностью</a>
-                                    <p class="card-text"th:text="${review.getUser().getFirstName()}"> </p>
+                                    <h4 class="card-title" th:text="${article.getArticleName()}"></h4>
+                                        <a class="header"th:href="@{'/article/' + ${article.getId()}}">Читать полностью</a>
+                                    <p class="card-text"th:text="${article.getUser().getFirstName()}"> </p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="backside">
                                     <div class="card">
                                         <div class="card-body text-center mt-4">
-                                            <p class="card-text"th:text="${review.getDescription()}"></p>
+                                            <p class="card-text" th:text="${article.getDescription()}"></p>
                                     </div>
                                 </div>
                             </div>
