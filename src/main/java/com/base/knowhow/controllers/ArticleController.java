@@ -64,4 +64,18 @@ public class ArticleController {
         return "article";
     }
 
+    @GetMapping("/myArticles")
+    public String showPersonalArticles(Authentication authentication,Model model){
+        User user = authenticationService.getUserByAuthentication(authentication);
+        model.addAttribute("user",user);
+        model.addAttribute("article",articleService.findAllByUser(user));
+        return "personal-articles";
+    }
+
+    @GetMapping("/deleted/{id}")
+    public String deletedArticlePage(@PathVariable("id")Long id){
+        articleService.deleteArticleById(id);
+
+        return "deleted";
+    }
 }

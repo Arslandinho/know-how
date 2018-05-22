@@ -8,11 +8,17 @@ import com.base.knowhow.services.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
 
 @Service
+@Transactional
 public class ArticleServiceImpl implements ArticleService {
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Autowired
     private ArticleRepository articleRepository;
@@ -38,5 +44,16 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public Article getArticleById(Long id) {
         return articleRepository.getArticleById(id);
+    }
+
+    @Override
+    public void deleteArticleById(Long id) {
+//        return articleRepository.deleteById(id);
+          entityManager.remove(articleRepository.getArticleById(id));
+    }
+
+    @Override
+    public List<Article> findAllByUser(User user) {
+        return articleRepository.findAllByUser(user);
     }
 }

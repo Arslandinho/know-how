@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Мои статьи</title>
+    <div th:include="fragments/header :: head"></div>
+    <link href="resources/css/reviews.css" rel="stylesheet" type="text/css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+<body>
+<div th:include="fragments/header :: navbar"></div>
+<div class="container">
+    <section id="team" class="pb-5">
+        <div class="container">
+            <h5 class="section-title h1">Мои статьи</h5>
+            <div class="row">
+                <th:block th:each="article : ${article}">
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                            <div class="mainflip">
+                                <div class="frontside">
+                                    <div class="card">
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title" th:text="${article.getArticleName()}"></h4>
+                                            <a class="header"th:href="@{'/article/' + ${article.getId()}}">Читать полностью</a>
+                                            <p class="card-text"th:text="${article.getUser().getFirstName()}"> </p>
+                                            <a class="header" th:href="@{'/deleted/'+ ${article.getId()}}">Удалить статью</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="backside">
+                                    <div class="card">
+                                        <div class="card-body text-center mt-4">
+                                            <p class="card-text" th:text="${article.getDescription()}"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </th:block>
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+<!-- Team -->
