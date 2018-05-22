@@ -27,11 +27,11 @@
                     Статья
                 </h3>
                 <div class="blog-post">
-                    <h2 class="blog-post-title" th:text="${review.getReviewName()}"></h2>
-                    <p class="blog-post-meta"th:text="${review.getReviewDate()}"></p>
+                    <h2 class="blog-post-title" th:text="${article.getArticleName()}"></h2>
+                    <p class="blog-post-meta" th:text="${article.getArticleDate()}"></p>
                     <hr>
                     <blockquote>
-                        <p th:text="${review.getDescription()}"> </p>
+                        <p th:text="${article.getDescription()}"> </p>
                     </blockquote>
                 </div>
             </div><!-- /.blog-main -->

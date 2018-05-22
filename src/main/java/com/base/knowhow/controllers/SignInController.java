@@ -27,8 +27,6 @@ public class SignInController {
     @GetMapping("/signIn")
     public String login(@ModelAttribute("model") ModelMap model, Authentication authentication,
                         @RequestParam Optional<String> error) {
-        if (authentication == null) {
-        }
         if (authentication != null) {
             return "redirect:/";
         }
