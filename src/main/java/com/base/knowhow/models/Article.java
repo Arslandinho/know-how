@@ -21,6 +21,7 @@ public class Article {
     private Long id;
 
     @NotNull
+    @Column(name = "article_date")
     private String articleDate;
 
     @NotNull

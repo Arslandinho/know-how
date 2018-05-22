@@ -14,4 +14,9 @@ public interface ArticleService {
 
     Article getArticleById(Long id);
 
+    void deleteArticleById(Long id);
+
+    List<Article> findAllByUser(User user);
+
+
 }
